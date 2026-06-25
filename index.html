@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JC Nutrición | Lic. Jamil Cesin - Nutrición Deportiva y Estética</title>
+  <meta name="description" content="Asesoramiento nutricional personalizado en Montevideo. Nutrición deportiva y estética sin dietas restrictivas.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-green: #A8C66C;
+      --brand-orange: #E8714A;
+      --brand-cream: #FAFAF5;
+      --brand-black: #333333;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--brand-black);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.8;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-weight: 900; letter-spacing: 2px; }
+    h2 { font-weight: 900; letter-spacing: 1.2px; }
+    h3 { font-weight: 800; letter-spacing: 0.5px; }
+
+    .bg-brand-green { background-color: var(--brand-green); }
+    .bg-brand-orange { background-color: var(--brand-orange); }
+    .bg-brand-cream { background-color: var(--brand-cream); }
+    .text-brand-green { color: var(--brand-green); }
+    .text-brand-orange { color: var(--brand-orange); }
+    .border-brand-green { border-color: var(--brand-green); }
+
+    /* Advanced Animations - Frame Triggers */
+    .reveal {
+      opacity: 0;
+      transform: translate3d(0, 30px, 0);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translate3d(-30px, 0, 0);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translate3d(30px, 0, 0);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-bounce {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible, .reveal-left.is-visible, .reveal-right.is-visible, .reveal-scale.is-visible, .reveal-bounce.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .stagger-item {
+      transition-delay: calc(var(--order) * 150ms);
+    }
+
+    /* Hero Slider with Motion */
+    .slider-item {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.15);
+      transition: opacity 1.5s ease-in-out, transform 10s cubic-bezier(0.25, 1, 0.5, 1);
+      z-index: 1;
+      pointer-events: none;
+      will-change: opacity, transform;
+    }
+    .slider-item.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 2;
+      pointer-events: auto;
+    }
+    .hero-overlay {
+      background: linear-gradient(to bottom, rgba(168,198,108,0.4) 0%, rgba(51,51,51,0.8) 100%);
+    }
+
+    /* Premium Effects */
+    .premium-card {
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .premium-card:hover {
+      transform: translateY(-16px);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.1);
+      border-color: var(--brand-green);
+    }
+
+    .glow-hover:hover {
+      box-shadow: 0 0 30px rgba(232, 113, 74, 0.5);
+      transform: scale(1.05);
+    }
+
+    .glass-btn {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .glass-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg, var(--brand-green), var(--brand-orange));
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Google Maps Container */
+    .maps-container {
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      transform: translateZ(0);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-open {
+        overflow: hidden;
+      }
+      #mobile-nav {
+        clip-path: circle(0% at 100% 0%);
+        transition: clip-path 0.5s ease-in-out;
+      }
+      #mobile-nav.open {
+        clip-path: circle(150% at 100% 0%);
+      }
+    }
+  </style>
+</head>
+<body class="bg-brand-cream">
+  <!-- 1. NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-[15px] border-b border-gray-100/50 py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
+    <a href="#inicio" id="nav-logo-link" class="text-2xl font-black text-brand-green flex items-center gap-2 transform hover:scale-105 transition-transform tracking-tight">
+      <iconify-icon icon="lucide:leaf" class="text-brand-orange text-3xl"></iconify-icon>
+      JC NUTRICIÓN
+    </a>
+
+    <!-- Desktop Links -->
+    <div class="hidden lg:flex gap-10 items-center">
+      <a href="#inicio" id="nav-inicio" class="nav-link font-semibold text-gray-700 transition-colors uppercase text-sm tracking-widest">Inicio</a>
+      <a href="#metodologia" id="nav-metodologia" class="nav-link font-semibold text-gray-700 transition-colors uppercase text-sm tracking-widest">Método</a>
+      <a href="#planes" id="nav-planes" class="nav-link font-semibold text-gray-700 transition-colors uppercase text-sm tracking-widest">Planes</a>
+      <a href="#equipo" id="nav-equipo" class="nav-link font-semibold text-gray-700 transition-colors uppercase text-sm tracking-widest">Equipo</a>
+      <a href="#contacto" id="nav-contacto" class="nav-link font-semibold text-gray-700 transition-colors uppercase text-sm tracking-widest">Contacto</a>
+      <a href="https://wa.me/59896820222" id="nav-cta-wa" class="bg-brand-orange text-white px-8 py-4 rounded-full font-bold glow-hover transition-all tracking-wide">WhatsApp</a>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-btn" class="lg:hidden text-3xl text-gray-800 p-2 z-50" aria-label="Menu">
+      <iconify-icon icon="lucide:menu"></iconify-icon>
+    </button>
+
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-nav" class="fixed inset-0 bg-white z-40 lg:hidden flex flex-col items-center justify-center gap-8">
+      <a href="#inicio" class="text-3xl font-black text-gray-800 uppercase tracking-widest">Inicio</a>
+      <a href="#metodologia" class="text-3xl font-black text-gray-800 uppercase tracking-widest">Método</a>
+      <a href="#planes" class="text-3xl font-black text-gray-800 uppercase tracking-widest">Planes</a>
+      <a href="#equipo" class="text-3xl font-black text-gray-800 uppercase tracking-widest">Equipo</a>
+      <a href="#contacto" class="text-3xl font-black text-gray-800 uppercase tracking-widest">Contacto</a>
+      <a href="https://wa.me/59896820222" class="mt-8 bg-brand-orange text-white px-10 py-5 rounded-full font-bold text-xl shadow-xl">Hacer consulta</a>
+    </div>
+  </nav>
+
+  <!-- 2. HERO / SLIDER -->
+  <section id="inicio" class="relative h-[95vh] md:h-screen overflow-hidden">
+    <div id="hero-slider" class="absolute inset-0">
+      <!-- Slide 1: Consulta Profesional -->
+      <div class="slider-item active absolute inset-0 bg-cover bg-center"
+           style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=85&w=1920&auto=format&fit=crop');">
+        <div class="absolute inset-0 hero-overlay"></div>
+      </div>
+      <!-- Slide 2: Nutrición Deportiva -->
+      <div class="slider-item absolute inset-0 bg-cover bg-center"
+           style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=85&w=1920&auto=format&fit=crop');">
+        <div class="absolute inset-0 hero-overlay"></div>
+      </div>
+      <!-- Slide 3: Precisión y Antropometría -->
+      <div class="slider-item absolute inset-0 bg-cover bg-center"
+           style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0a?q=85&w=1920&auto=format&fit=crop');">
+        <div class="absolute inset-0 hero-overlay"></div>
+      </div>
+      <!-- Slide 4: Estilo de Vida Saludable -->
+      <div class="slider-item absolute inset-0 bg-cover bg-center"
+           style="background-image: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=85&w=1920&auto=format&fit=crop');">
+        <div class="absolute inset-0 hero-overlay"></div>
+      </div>
+    </div>
+
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 max-w-[1440px] mx-auto">
+      <h1 class="text-5xl sm:text-7xl md:text-[88px] text-white mb-8 leading-[1.05] tracking-tight reveal is-visible">
+        Estrategia nutricional <br class="hidden md:block"> de <span class="text-brand-green font-extrabold italic">alto rendimiento</span>
+      </h1>
+      <p class="text-lg md:text-2xl text-white/90 mb-14 max-w-2xl font-light tracking-wide drop-shadow-md reveal is-visible" style="transition-delay: 200ms">
+        Transformá tu composición corporal con ciencia, rigor profesional y un enfoque totalmente personalizado.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 reveal is-visible" style="transition-delay: 400ms">
+        <a href="#planes" id="hero-cta-planes" class="bg-brand-green text-white px-10 py-5 rounded-full font-bold text-xl transition-all shadow-[0_10px_30px_rgba(168,198,108,0.4)] hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(168,198,108,0.6)]">Ver programas</a>
+        <a href="https://wa.me/59896820222" id="hero-cta-wa" class="glass-btn text-white px-10 py-5 rounded-full font-bold text-xl flex items-center justify-center gap-3 transition-all hover:-translate-y-2">
+          <iconify-icon icon="logos:whatsapp-icon" class="text-2xl"></iconify-icon>
+          Asesoría directa
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 animate-pulse opacity-70">
+      <iconify-icon icon="lucide:mouse" class="text-white text-4xl mb-2 block mx-auto"></iconify-icon>
+      <iconify-icon icon="lucide:chevron-down" class="text-white text-3xl mx-auto -mt-4 block"></iconify-icon>
+    </div>
+  </section>
+
+  <!-- 3. METODOLOGÍA -->
+  <section id="metodologia" class="py-40 md:py-48 px-6 md:px-12 bg-gradient-to-b from-brand-cream to-white">
+    <div class="max-w-[1440px] mx-auto text-center">
+      <h2 class="text-4xl md:text-[56px] text-brand-orange mb-6 reveal">Nuestra Metodología</h2>
+      <p class="text-[#555555] text-xl mb-24 max-w-2xl mx-auto reveal italic">Un enfoque científico diseñado para que el cambio sea absoluto y definitivo.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mt-16">
+        <!-- Paso 1 -->
+        <div class="premium-card bg-white p-12 rounded-[56px] border border-gray-100/80 reveal stagger-item" style="--order: 1">
+          <div class="w-24 h-24 bg-gradient-to-br from-brand-green/20 to-brand-green/5 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-sm">
+            <iconify-icon icon="lucide:clipboard-list"></iconify-icon>
+          </div>
+          <h3 class="text-2xl mb-4 text-gray-800">Planificación</h3>
+          <p class="text-[#555555] font-medium leading-[1.8]">Armamos un plan estratégico y personalizado para mejorar tus hábitos desde el día uno.</p>
+        </div>
+        <!-- Paso 2 -->
+        <div class="premium-card bg-white p-12 rounded-[56px] border border-gray-100/80 reveal stagger-item" style="--order: 2">
+          <div class="w-24 h-24 bg-gradient-to-br from-brand-green/20 to-brand-green/5 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-sm">
+            <iconify-icon icon="lucide:refresh-cw"></iconify-icon>
+          </div>
+          <h3 class="text-2xl mb-4 text-gray-800">Adaptación</h3>
+          <p class="text-[#555555] font-medium leading-[1.8]">Ajustamos el programa al 100% a tus horarios, preferencias y estilo de vida real.</p>
+        </div>
+        <!-- Paso 3 -->
+        <div class="premium-card bg-white p-12 rounded-[56px] border border-gray-100/80 reveal stagger-item" style="--order: 3">
+          <div class="w-24 h-24 bg-gradient-to-br from-brand-green/20 to-brand-green/5 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-sm">
+            <iconify-icon icon="lucide:bar-chart-3"></iconify-icon>
+          </div>
+          <h3 class="text-2xl mb-4 text-gray-800">Seguimiento</h3>
+          <p class="text-[#555555] font-medium leading-[1.8]">Realizamos controles detallados para ajustar variables y asegurar tu progresión.</p>
+        </div>
+        <!-- Paso 4 -->
+        <div class="premium-card bg-white p-12 rounded-[56px] border border-gray-100/80 reveal stagger-item" style="--order: 4">
+          <div class="w-24 h-24 bg-gradient-to-br from-brand-green/20 to-brand-green/5 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-sm">
+            <iconify-icon icon="lucide:target"></iconify-icon>
+          </div>
+          <h3 class="text-2xl mb-4 text-gray-800">Resultados</h3>
+          <p class="text-[#555555] font-medium leading-[1.8]">Planteamos metas medibles y te acompañamos hasta consolidar tu mejor versión.</p>
+        </div>
+      </div>
+
+      <div class="mt-32 bg-white/70 backdrop-blur-lg p-16 rounded-[64px] border border-white max-w-5xl mx-auto shadow-[0_20px_60px_rgba(0,0,0,0.03)] reveal">
+        <p class="text-2xl md:text-3xl text-[#444] italic leading-[1.9] font-medium">
+          "Creemos que cada individuo es único. Por eso descartamos las dietas genéricas: analizamos tu fisiología, escuchamos tu historia y diseñamos un sistema nutricional sostenible a largo plazo."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PLANES -->
+  <section id="planes" class="py-40 bg-white relative">
+    <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-50"></div>
+    <div class="max-w-[1440px] mx-auto px-6 md:px-12">
+      <div class="text-center mb-32 reveal-scale">
+        <h2 class="text-4xl md:text-[56px] text-gray-900 mb-6">Programas de Seguimiento</h2>
+        <p class="text-[#777] text-xl italic">Seleccioná la modalidad que impulse tus metas</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <!-- Plan Integral -->
+        <div class="premium-card bg-brand-cream rounded-[56px] p-12 flex flex-col h-full border border-gray-100 reveal-scale stagger-item" style="--order: 1">
+          <h3 class="text-3xl mb-3 text-gray-900">Plan Integral</h3>
+          <p class="text-[#777] mb-8 text-lg">Comienza tu transformación</p>
+          <div class="text-6xl font-black text-brand-green mb-10 tracking-tight">$3.400 <span class="text-xl text-gray-400 font-medium tracking-normal">/mes</span></div>
+          <ul class="space-y-6 mb-16 flex-grow">
+            <li class="flex items-start gap-4">
+              <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
+              <span class="text-lg text-[#555] font-medium">Diseño nutricional 100% personalizado</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
+              <span class="text-lg text-[#555] font-medium">Control y ajustes cada 15 días</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
+              <span class="text-lg text-[#555] font-medium">Opciones de menú flexibles</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
+              <span class="text-lg text-[#555] font-medium">Modalidad presencial o virtual</span>
+            </li>
+          </ul>
+          <a href="https://wa.me/59896820222" id="plan-1-wa" class="w-full py-6 text-center bg-gray-900 text-white font-bold text-lg rounded-[24px] hover:bg-brand-orange transition-all shadow-xl tracking-wide">Seleccionar Plan</a>
+        </div>
+
+        <!-- Plan Deportivo -->
+        <div class="premium-card bg-white rounded-[56px] p-12 flex flex-col h-full border-[3px] border-brand-green relative shadow-[0_30px_60px_rgba(168,198,108,0.15)] reveal-scale stagger-item transform md:-translate-y-4" style="--order: 2">
+          <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-green to-[#8eb055] text-white px-10 py-3 rounded-full text-sm font-black tracking-[3px] uppercase shadow-lg">
+            RECOMENDADO
+          </div>
+          <h3 class="text-3xl mb-3 text-gray-900">Plan Deportivo</h3>
+          <p class="text-[#777] mb-8 text-lg">Rendimiento y composición máxima</p>
+          <div class="text-6xl font-black text-brand-green mb-10 tracking-tight">$3.900 <span class="text-xl text-gray-400 font-medium tracking-normal">/mes</span></div>
+          <ul class="space-y-6 mb-16 flex-grow">
+            <li class="flex items-start gap-4">
+              <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
+              <span class="text-lg text-[#555] font-semibold">Estrategia para alto rendimiento</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
+              <span class="text-lg text-[#555] font-semibold">Estudio Antropométrico completo</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
+              <span class="text-lg text-[#555] font-semibold">Protocolo de suplementación</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
+              <span class="text-lg text-[#555] font-semibold">Ajustes competitivos cada 15 días</span>
+            </li>
+          </ul>
+          <a href="https://wa.me/59896820222" id="plan-2-wa" class="w-full py-6 text-center bg-brand-orange text-white font-bold text-lg rounded-[24px] transition-all shadow-[0_10px_30px_rgba(232,113,74,0.4)] glow-hover tracking-wide">Seleccionar Plan</a>
+        </div>
+      </div>
+      <p class="mt-24 text-center text-[#999] font-medium uppercase tracking-[2px] text-sm">
+        Precios en Pesos Uruguayos (UYU) • Consultas internacionales disponibles vía WhatsApp
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. EQUIPO -->
+  <section id="equipo" class="py-40 md:py-48 px-6 md:px-12 bg-brand-cream relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent"></div>
+    <div class="max-w-[1440px] mx-auto relative z-10">
+      <div class="text-center mb-32 reveal-scale">
+        <h2 class="text-4xl md:text-[56px] text-brand-orange mb-6">Nuestros Profesionales</h2>
+        <p class="text-[#555] text-xl italic">Experiencia, ciencia y calidez humana</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
+        <!-- Jamil -->
+        <div class="bg-white rounded-[56px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-4 transition-all duration-700 reveal stagger-item group" style="--order: 1">
+          <div class="aspect-[4/5] bg-gray-100 relative overflow-hidden">
+            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/bd7ae29c-8fb1-4439-8ad8-b7b188e826a7/1782396791530-d51bb66c/ChatGPT_Image_25_jun_2026__11_11_21.png" alt="Lic. Jamil Cesin" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+          </div>
+          <div class="p-12 md:p-16">
+            <h3 class="text-4xl mb-3 text-gray-900">Lic. Jamil Cesin</h3>
+            <p class="text-brand-green font-bold text-sm mb-8 tracking-[3px] uppercase">Director Científico | Nutricionista</p>
+            <p class="text-[#555] text-lg leading-[1.9]">
+              Licenciado en Nutrición con amplia trayectoria en optimización del rendimiento deportivo y composición corporal estética. Su método descarta las restricciones severas, apostando por la reeducación alimentaria y estrategias aplicables a la vida real del paciente.
+            </p>
+          </div>
+        </div>
+        <!-- Kari -->
+        <div class="bg-white rounded-[56px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-4 transition-all duration-700 reveal stagger-item group md:mt-24" style="--order: 2">
+          <div class="aspect-[4/5] bg-gray-100 relative overflow-hidden">
+            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/bd7ae29c-8fb1-4439-8ad8-b7b188e826a7/1782396794146-5dc2eaa1/ChatGPT_Image_25_jun_2026__11_09_32.png" alt="Kari" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+          </div>
+          <div class="p-12 md:p-16">
+            <h3 class="text-4xl mb-3 text-gray-900">Kari</h3>
+            <p class="text-brand-green font-bold text-sm mb-8 tracking-[3px] uppercase">Patient Experience Manager</p>
+            <p class="text-[#555] text-lg leading-[1.9]">
+              Especialista en la experiencia integral del paciente. Kari gestiona con precisión tus turnos, agenda de controles y proporciona soporte logístico continuo para que tu ingreso y mantenimiento en el programa sea absolutamente fluido y profesional.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. ALIANZAS -->
+  <section class="py-40 bg-white">
+    <div class="max-w-[1440px] mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-[56px] text-gray-900 mb-24 reveal-bounce">Alianzas Exclusivas</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div class="p-16 border-[1.5px] border-brand-cream rounded-[48px] hover:border-brand-green transition-colors reveal-bounce stagger-item hover:shadow-[0_20px_40px_rgba(168,198,108,0.1)]" style="--order: 1">
+          <iconify-icon icon="lucide:users-2" class="text-brand-orange text-6xl mb-8 transition-transform hover:scale-110 duration-300"></iconify-icon>
+          <h4 class="text-2xl text-brand-green mb-4">EQUIPO KORU</h4>
+          <p class="text-5xl font-black text-brand-orange mb-6 tracking-tighter">15% OFF</p>
+          <p class="text-[#777] text-lg font-medium">Bonificación en planes para atletas del equipo Koru</p>
+        </div>
+        <div class="p-16 border-[1.5px] border-brand-cream rounded-[48px] hover:border-brand-green transition-colors reveal-bounce stagger-item hover:shadow-[0_20px_40px_rgba(168,198,108,0.1)]" style="--order: 2">
+          <iconify-icon icon="lucide:cookie" class="text-brand-orange text-6xl mb-8 transition-transform hover:scale-110 duration-300"></iconify-icon>
+          <h4 class="text-2xl text-brand-green mb-4">AVENTRI</h4>
+          <p class="text-5xl font-black text-brand-orange mb-6 tracking-tighter">10% OFF</p>
+          <p class="text-[#777] text-lg font-medium">En todas tus adquisiciones presenciales en consultorio</p>
+        </div>
+        <div class="p-16 border-[1.5px] border-brand-cream rounded-[48px] hover:border-brand-green transition-colors reveal-bounce stagger-item hover:shadow-[0_20px_40px_rgba(168,198,108,0.1)]" style="--order: 3">
+          <iconify-icon icon="lucide:zap" class="text-brand-orange text-6xl mb-8 transition-transform hover:scale-110 duration-300"></iconify-icon>
+          <h4 class="text-2xl text-brand-green mb-4">WAY BAR</h4>
+          <p class="text-4xl font-black text-brand-orange mb-6 tracking-tighter uppercase">Oficial</p>
+          <p class="text-[#777] text-lg font-medium">Stock preferencial de barras proteicas en sedes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CONTACTO -->
+  <section id="contacto" class="py-40 md:py-48 px-6 md:px-12 bg-gradient-to-b from-brand-cream to-white overflow-hidden">
+    <div class="max-w-[1440px] mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+
+        <!-- Form Side -->
+        <div class="bg-white p-12 md:p-20 rounded-[56px] shadow-[0_30px_80px_rgba(0,0,0,0.06)] reveal-left">
+          <h2 class="text-4xl md:text-[56px] text-brand-orange mb-6">Iniciá tu Proceso</h2>
+          <p class="text-[#777] text-xl mb-14 italic">Registrá tus datos y coordinaremos tu admisión vía WhatsApp</p>
+
+          <form class="space-y-10">
+            <div class="space-y-4">
+              <label class="text-xs font-black text-[#999] uppercase tracking-[3px]">Identidad</label>
+              <input type="text" class="w-full px-8 py-6 bg-brand-cream/50 border-2 border-transparent rounded-[32px] focus:bg-white focus:border-brand-green/30 focus:ring-4 focus:ring-brand-green/10 focus:outline-none text-xl transition-all" placeholder="Ej: Juan Pérez">
+            </div>
+            <div class="space-y-4">
+              <label class="text-xs font-black text-[#999] uppercase tracking-[3px]">Motivo de consulta</label>
+              <textarea rows="4" class="w-full px-8 py-6 bg-brand-cream/50 border-2 border-transparent rounded-[32px] focus:bg-white focus:border-brand-green/30 focus:ring-4 focus:ring-brand-green/10 focus:outline-none text-xl transition-all resize-none" placeholder="Detalla tus objetivos principales..."></textarea>
+            </div>
+            <button type="submit" class="w-full py-7 bg-brand-orange text-white font-bold text-xl rounded-[32px] hover:scale-[1.02] transition-all shadow-[0_15px_40px_rgba(232,113,74,0.3)] glow-hover active:scale-95 tracking-wide mt-4">Contactar por WhatsApp</button>
+          </form>
+
+          <div class="mt-16 flex items-center justify-center gap-6 text-[#999]">
+            <div class="h-px flex-grow bg-gray-200"></div>
+            <span class="font-black text-xs tracking-[3px] uppercase">Atención Directa</span>
+            <div class="h-px flex-grow bg-gray-200"></div>
+          </div>
+
+          <div class="mt-12">
+            <a href="https://wa.me/59896820222" id="contact-wa-large" class="flex items-center justify-center gap-5 text-brand-green text-4xl font-black hover:scale-105 transition-transform tracking-tight">
+              <iconify-icon icon="logos:whatsapp-icon"></iconify-icon>
+              096 820 222
+            </a>
+          </div>
+        </div>
+
+        <!-- Info Side -->
+        <div class="space-y-20 py-10 reveal-right">
+          <div>
+            <h3 class="text-3xl mb-12 text-gray-900">Coordenadas</h3>
+            <div class="space-y-12">
+              <div class="flex items-start gap-8 group">
+                <div class="w-20 h-20 bg-white rounded-[28px] flex items-center justify-center text-4xl text-brand-orange shadow-[0_10px_30px_rgba(0,0,0,0.05)] group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-300">
+                  <iconify-icon icon="lucide:map-pin"></iconify-icon>
+                </div>
+                <div class="pt-2">
+                  <p class="font-black text-[#999] text-xs uppercase tracking-[3px] mb-2">Consultorio Principal</p>
+                  <p class="text-2xl font-bold text-gray-900 mb-1">Pedro Bustamante 1322</p>
+                  <p class="text-[#777] text-lg">Barrio Buceo, Montevideo, Uruguay</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-8 group">
+                <div class="w-20 h-20 bg-white rounded-[28px] flex items-center justify-center text-4xl text-brand-orange shadow-[0_10px_30px_rgba(0,0,0,0.05)] group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-300">
+                  <iconify-icon icon="lucide:instagram"></iconify-icon>
+                </div>
+                <div class="pt-2">
+                  <p class="font-black text-[#999] text-xs uppercase tracking-[3px] mb-2">Divulgación & Ciencia</p>
+                  <p class="text-2xl font-bold text-gray-900 mb-2">@nutricionista.jamilcesin</p>
+                  <a href="#" class="text-brand-green font-bold text-lg hover:text-brand-orange transition-colors nav-link inline-block">Unirse a la comunidad</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Functional Map -->
+          <div class="maps-container h-[450px] w-full bg-gray-100 relative">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.745672288005!2d-56.136453!3d-34.8953185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f812b189ba1b9%3A0x600cb8c3f71c4c92!2sPedro%20Bustamante%201322%2C%2011400%20Montevideo%2C%20Departamento%20de%20Montevideo%2C%20Uruguay!5e0!3m2!1sen!2sar!4v1689364571992!5m2!1sen!2sar"
+              class="absolute inset-0 w-full h-full border-0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FOOTER -->
+  <footer class="bg-[#111111] text-white pt-32 pb-16 px-6 md:px-12">
+    <div class="max-w-[1440px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24 mb-24">
+        <div class="lg:col-span-2">
+          <a href="#inicio" class="text-4xl font-black text-brand-green flex items-center gap-4 mb-10 tracking-tight hover:opacity-80 transition-opacity">
+            <iconify-icon icon="lucide:leaf" class="text-brand-orange"></iconify-icon>
+            JC NUTRICIÓN
+          </a>
+          <p class="text-gray-400 text-xl leading-[1.9] max-w-lg">
+            Asesoramiento nutricional premium en Montevideo. Diseñamos estrategias científicas para atletas y personas decididas a transformar su composición corporal de manera definitiva.
+          </p>
+          <div class="flex gap-6 mt-12">
+            <a href="#" id="footer-ig" class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-2xl hover:bg-brand-orange hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(232,113,74,0.3)] transition-all duration-300"><iconify-icon icon="lucide:instagram"></iconify-icon></a>
+            <a href="#" id="footer-fb" class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-2xl hover:bg-brand-orange hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(232,113,74,0.3)] transition-all duration-300"><iconify-icon icon="lucide:facebook"></iconify-icon></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-bold mb-10 text-white tracking-[1px] uppercase">Navegación</h4>
+          <ul class="space-y-6">
+            <li><a href="#inicio" id="footer-link-1" class="text-gray-400 hover:text-brand-orange text-lg transition-colors font-medium">Inicio</a></li>
+            <li><a href="#metodologia" id="footer-link-2" class="text-gray-400 hover:text-brand-orange text-lg transition-colors font-medium">Método Científico</a></li>
+            <li><a href="#planes" id="footer-link-3" class="text-gray-400 hover:text-brand-orange text-lg transition-colors font-medium">Programas</a></li>
+            <li><a href="#equipo" id="footer-link-4" class="text-gray-400 hover:text-brand-orange text-lg transition-colors font-medium">Staff Profesional</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-bold mb-10 text-white tracking-[1px] uppercase">Contacto</h4>
+          <a href="https://wa.me/59896820222" id="footer-wa-link" class="flex items-center gap-4 text-brand-green font-black text-2xl hover:text-brand-orange transition-colors mb-6">
+            <iconify-icon icon="logos:whatsapp-icon"></iconify-icon>
+            096 820 222
+          </a>
+          <p class="text-gray-400 text-lg mb-2">Pedro Bustamante 1322</p>
+          <p class="text-gray-400 text-lg">Montevideo, Uruguay</p>
+        </div>
+      </div>
+
+      <div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-500 font-medium uppercase tracking-[2px]">
+        <p>© 2025 JC NUTRICIÓN — LIC. JAMIL CESIN. RESERVADOS TODOS LOS DERECHOS.</p>
+        <p>DESARROLLO DE ALTO NIVEL PARA TU MARCA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('py-4', 'shadow-[0_10px_30px_rgba(0,0,0,0.08)]');
+        navbar.classList.remove('py-5');
+      } else {
+        navbar.classList.remove('py-4', 'shadow-[0_10px_30px_rgba(0,0,0,0.08)]');
+        navbar.classList.add('py-5');
+      }
+    });
+
+    // Mobile Nav Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileNavLinks = mobileNav.querySelectorAll('a');
+
+    menuBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+      document.body.classList.toggle('mobile-menu-open');
+      menuBtn.querySelector('iconify-icon').setAttribute('icon', mobileNav.classList.contains('open') ? 'lucide:x' : 'lucide:menu');
+    });
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        document.body.classList.remove('mobile-menu-open');
+        menuBtn.querySelector('iconify-icon').setAttribute('icon', 'lucide:menu');
+      });
+    });
+
+    // Hero Slider Logic with Motion
+    const slides = document.querySelectorAll('.slider-item');
+    let currentSlide = 0;
+
+    // Preload images to prevent flickering/grey screen
+    const imageUrls = Array.from(slides).map(slide => {
+      const bg = slide.style.backgroundImage;
+      return bg.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+    });
+
+    const preloadImages = (urls) => {
+      urls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+      });
+    };
+    preloadImages(imageUrls);
+
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+
+      requestAnimationFrame(() => {
+        slides[currentSlide].classList.add('active');
+      });
+    }
+
+    setInterval(nextSlide, 6000);
+
+    // Advanced Intersection Observer for Premium Reveals
+    const observerOptions = {
+      threshold: 0.12,
+      rootMargin: '0px 0px -80px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-bounce').forEach(el => observer.observe(el));
+
+    // Smooth scroll offset adjustment for fixed navbar
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offset = 120;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = target.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
