@@ -9,7 +9,7 @@
   <meta property="og:description" content="Nutrición deportiva y estética sin dietas restrictivas en Montevideo.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jcnutricion.com/">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=85&w=1200&auto=format&fit=crop">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=85&w=1200&auto=format&fit=crop">
   <link rel="canonical" href="https://jcnutricion.com/">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
@@ -111,11 +111,6 @@
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     }
-    .premium-card:hover {
-      transform: translateY(-16px);
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.1);
-      border-color: var(--brand-green);
-    }
 
     .glow-hover:hover {
       box-shadow: 0 0 30px rgba(232, 113, 74, 0.5);
@@ -159,20 +154,24 @@
       transform: translateZ(0);
     }
 
-    @media (max-width: 768px) {
-      .mobile-menu-open {
-        overflow: hidden;
-      }
+    .mobile-menu-open {
+      overflow: hidden;
+    }
+    #mobile-nav {
+      clip-path: circle(0% at 100% 0%);
+      transition: clip-path 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      opacity: 0;
+      pointer-events: none;
+    }
+    #mobile-nav.open {
+      clip-path: circle(150% at 100% 0%);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (min-width: 1024px) {
       #mobile-nav {
-        clip-path: circle(0% at 100% 0%);
-        transition: clip-path 0.5s ease-in-out, opacity 0.5s ease-in-out;
-        opacity: 0;
-        pointer-events: none;
-      }
-      #mobile-nav.open {
-        clip-path: circle(150% at 100% 0%);
-        opacity: 1;
-        pointer-events: auto;
+        display: none !important;
       }
     }
 
@@ -309,7 +308,7 @@
   </nav>
 
   <!-- 2. HERO / SLIDER -->
-  <section id="inicio" class="relative min-h-[100svh] md:min-h-screen overflow-hidden">
+  <section id="inicio" class="relative h-[100svh] md:h-screen overflow-hidden">
     <div id="hero-slider" class="absolute inset-0">
       <!-- Slide 1: Alimentación Saludable -->
       <div class="slider-item active absolute inset-0 bg-cover bg-center"
@@ -336,7 +335,7 @@
     <!-- Slider Dots Container -->
     <div class="slider-dots" id="slider-dots-container"></div>
 
-    <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 max-w-[1440px] mx-auto pt-24 md:pt-0 will-change-transform">
+    <div id="hero-content" class="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 max-w-[1440px] mx-auto pt-16 md:pt-0 will-change-transform">
       <h1 class="text-[2.5rem] leading-[1.1] sm:text-6xl md:text-7xl lg:text-[88px] text-white font-black uppercase mb-6 md:mb-8 tracking-tight drop-shadow-2xl reveal is-visible">
         Estrategia nutricional de <br class="md:hidden"><span class="text-brand-green italic drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)] block md:inline mt-2 md:mt-0">alto rendimiento</span>
       </h1>
@@ -353,7 +352,7 @@
     </div>
 
     <!-- Scroll indicator -->
-    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 animate-pulse opacity-70">
+    <div class="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 animate-pulse opacity-70">
       <iconify-icon icon="lucide:mouse" class="text-white text-4xl mb-2 block mx-auto"></iconify-icon>
       <iconify-icon icon="lucide:chevron-down" class="text-white text-3xl mx-auto -mt-4 block"></iconify-icon>
     </div>
@@ -446,7 +445,7 @@
               <span class="text-lg text-[#555] font-medium">Modalidad presencial o virtual</span>
             </li>
           </ul>
-          <a href="https://wa.me/59896820222" id="plan-1-wa" class="w-full py-6 text-center bg-gray-900 text-white font-bold text-lg rounded-[24px] hover:bg-brand-orange transition-all shadow-xl tracking-wide">Seleccionar Plan</a>
+          <a href="https://wa.me/59896820222" id="plan-1-wa" class="block w-full py-6 text-center bg-gray-900 text-white font-bold text-lg rounded-[24px] hover:bg-brand-orange transition-all shadow-xl tracking-wide">Seleccionar Plan</a>
         </div>
 
         <!-- Plan Deportivo -->
@@ -475,7 +474,7 @@
               <span class="text-lg text-gray-300 font-medium">Ajustes competitivos cada 15 días</span>
             </li>
           </ul>
-          <a href="https://wa.me/59896820222" id="plan-2-wa" class="w-full py-6 text-center bg-brand-green text-gray-900 font-black text-lg rounded-[24px] transition-all shadow-[0_10px_30px_rgba(168,198,108,0.3)] hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(168,198,108,0.5)] tracking-wide">Seleccionar Plan</a>
+          <a href="https://wa.me/59896820222" id="plan-2-wa" class="block w-full py-6 text-center bg-brand-green text-gray-900 font-black text-lg rounded-[24px] transition-all shadow-[0_10px_30px_rgba(168,198,108,0.3)] hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(168,198,108,0.5)] tracking-wide">Seleccionar Plan</a>
         </div>
       </div>
       <p class="mt-24 text-center text-[#999] font-medium uppercase tracking-[2px] text-sm">
@@ -761,7 +760,10 @@
       const dot = document.createElement('div');
       dot.classList.add('dot');
       if(index === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goToSlide(index));
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+        resetSlideInterval();
+      });
       dotsContainer.appendChild(dot);
     });
     const dots = document.querySelectorAll('.dot');
@@ -796,6 +798,11 @@
     }
 
     let slideInterval = setInterval(nextSlide, 3500);
+
+    function resetSlideInterval() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 3500);
+    }
 
     // Hero Parallax Effect
     const heroContent = document.getElementById('hero-content');
@@ -869,15 +876,16 @@
       let current = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= (sectionTop - 200)) {
-          current = section.getAttribute('id');
+        const sectionId = section.getAttribute('id');
+        if (sectionId && window.scrollY >= (sectionTop - 200)) {
+          current = sectionId;
         }
       });
 
       navItems.forEach(li => {
         li.classList.remove('active');
-        if (li.getAttribute('href').includes(current)) {
+        const href = li.getAttribute('href');
+        if (current && href && href.includes(current)) {
           li.classList.add('active');
         }
       });
