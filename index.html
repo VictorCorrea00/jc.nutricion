@@ -91,7 +91,7 @@
       inset: 0;
       opacity: 0;
       transform: scale(1.15);
-      transition: opacity 1.5s ease-in-out, transform 10s cubic-bezier(0.25, 1, 0.5, 1);
+      transition: opacity 0.8s ease-in-out, transform 10s cubic-bezier(0.25, 1, 0.5, 1);
       z-index: 1;
       pointer-events: none;
       will-change: opacity, transform;
@@ -311,22 +311,17 @@
   <!-- 2. HERO / SLIDER -->
   <section id="inicio" class="relative h-[95vh] md:h-screen overflow-hidden">
     <div id="hero-slider" class="absolute inset-0">
-      <!-- Slide 1: Consulta Profesional -->
+      <!-- Slide 1: Nutrición Deportiva -->
       <div class="slider-item active absolute inset-0 bg-cover bg-center"
-           style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=85&w=1920&auto=format&fit=crop');">
-        <div class="absolute inset-0 hero-overlay"></div>
-      </div>
-      <!-- Slide 2: Nutrición Deportiva -->
-      <div class="slider-item absolute inset-0 bg-cover bg-center"
            style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=85&w=1920&auto=format&fit=crop');">
         <div class="absolute inset-0 hero-overlay"></div>
       </div>
-      <!-- Slide 3: Precisión y Antropometría -->
+      <!-- Slide 2: Precisión y Antropometría -->
       <div class="slider-item absolute inset-0 bg-cover bg-center"
            style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0a?q=85&w=1920&auto=format&fit=crop');">
         <div class="absolute inset-0 hero-overlay"></div>
       </div>
-      <!-- Slide 4: Estilo de Vida Saludable -->
+      <!-- Slide 3: Estilo de Vida Saludable -->
       <div class="slider-item absolute inset-0 bg-cover bg-center"
            style="background-image: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=85&w=1920&auto=format&fit=crop');">
         <div class="absolute inset-0 hero-overlay"></div>
@@ -337,10 +332,10 @@
     <div class="slider-dots" id="slider-dots-container"></div>
 
     <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 max-w-[1440px] mx-auto will-change-transform">
-      <h1 class="text-5xl sm:text-7xl md:text-[88px] text-white mb-8 leading-[1.05] tracking-tight reveal is-visible">
-        Estrategia nutricional <br class="hidden md:block"> de <span class="text-brand-green font-extrabold italic">alto rendimiento</span>
+      <h1 class="text-5xl sm:text-7xl md:text-[90px] text-white font-black uppercase mb-8 leading-[1.05] tracking-tight drop-shadow-2xl reveal is-visible">
+        Estrategia nutricional <br class="hidden md:block"> de <span class="text-brand-green italic drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">alto rendimiento</span>
       </h1>
-      <p class="text-lg md:text-2xl text-white/90 mb-14 max-w-2xl font-light tracking-wide drop-shadow-md reveal is-visible" style="transition-delay: 200ms">
+      <p class="text-xl md:text-3xl text-white mb-14 max-w-3xl font-medium tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] reveal is-visible" style="transition-delay: 200ms">
         Transformá tu composición corporal con ciencia, rigor profesional y un enfoque totalmente personalizado.
       </p>
       <div class="flex flex-col sm:flex-row gap-6 reveal is-visible" style="transition-delay: 400ms">
@@ -789,7 +784,7 @@
       updateDots();
     }
 
-    let slideInterval = setInterval(nextSlide, 6000);
+    let slideInterval = setInterval(nextSlide, 3500);
 
     // Hero Parallax Effect
     const heroContent = document.getElementById('hero-content');
