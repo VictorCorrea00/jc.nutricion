@@ -309,7 +309,7 @@
   </nav>
 
   <!-- 2. HERO / SLIDER -->
-  <section id="inicio" class="relative h-[95vh] md:h-screen overflow-hidden">
+  <section id="inicio" class="relative min-h-[100svh] md:min-h-screen overflow-hidden">
     <div id="hero-slider" class="absolute inset-0">
       <!-- Slide 1: Alimentación Saludable -->
       <div class="slider-item active absolute inset-0 bg-cover bg-center"
@@ -336,9 +336,9 @@
     <!-- Slider Dots Container -->
     <div class="slider-dots" id="slider-dots-container"></div>
 
-    <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 md:px-6 max-w-[1440px] mx-auto will-change-transform">
-      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-[88px] text-white font-black uppercase mb-6 md:mb-8 leading-[1.15] sm:leading-[1.05] tracking-tight drop-shadow-2xl reveal is-visible">
-        Estrategia nutricional de <span class="text-brand-green italic drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)] block md:inline mt-2 md:mt-0">alto rendimiento</span>
+    <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 max-w-[1440px] mx-auto pt-24 md:pt-0 will-change-transform">
+      <h1 class="text-[2.5rem] leading-[1.1] sm:text-6xl md:text-7xl lg:text-[88px] text-white font-black uppercase mb-6 md:mb-8 tracking-tight drop-shadow-2xl reveal is-visible">
+        Estrategia nutricional de <br class="md:hidden"><span class="text-brand-green italic drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)] block md:inline mt-2 md:mt-0">alto rendimiento</span>
       </h1>
       <p class="text-lg sm:text-xl md:text-3xl text-white mb-10 md:mb-14 max-w-3xl font-medium tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] reveal is-visible" style="transition-delay: 200ms">
         Transformá tu composición corporal con ciencia, rigor profesional y un enfoque totalmente personalizado.
@@ -360,42 +360,47 @@
   </section>
 
   <!-- 3. METODOLOGÍA -->
-  <section id="metodologia" class="py-40 md:py-48 px-6 md:px-12 bg-gradient-to-b from-brand-cream to-white">
+  <section id="metodologia" class="py-40 md:py-48 px-6 md:px-12 bg-gradient-to-b from-brand-cream via-white to-gray-50 relative overflow-hidden">
+    <!-- Ambient background shapes -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+      <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-green/5 rounded-full blur-[100px]"></div>
+      <div class="absolute top-1/2 -left-40 w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-[120px]"></div>
+    </div>
     <div class="max-w-[1440px] mx-auto text-center">
       <h2 class="text-4xl md:text-[56px] text-brand-orange mb-6 reveal">Nuestra Metodología</h2>
       <p class="text-[#555555] text-xl mb-24 max-w-2xl mx-auto reveal italic">Un enfoque científico diseñado para que el cambio sea absoluto y definitivo.</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mt-16">
         <!-- Paso 1 -->
-        <div class="premium-card bg-white p-12 rounded-[56px] border border-gray-100/80 reveal stagger-item" style="--order: 1">
-          <div class="w-24 h-24 bg-gradient-to-br from-brand-green/20 to-brand-green/5 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-sm">
+        <div class="premium-card relative z-10 bg-white/80 backdrop-blur-sm p-12 rounded-[56px] border border-white shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:-translate-y-4 hover:shadow-[0_30px_60px_rgba(168,198,108,0.15)] transition-all duration-500 reveal stagger-item group" style="--order: 1">
+          <div class="w-24 h-24 bg-gradient-to-br from-gray-50 to-gray-100 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] group-hover:scale-110 group-hover:bg-brand-green group-hover:text-white transition-all duration-500">
             <iconify-icon icon="lucide:clipboard-list"></iconify-icon>
           </div>
-          <h3 class="text-2xl mb-4 text-gray-800">Planificación</h3>
+          <h3 class="text-2xl mb-4 text-gray-900 font-bold">Planificación</h3>
           <p class="text-[#555555] font-medium leading-[1.8]">Armamos un plan estratégico y personalizado para mejorar tus hábitos desde el día uno.</p>
         </div>
         <!-- Paso 2 -->
-        <div class="premium-card bg-white p-12 rounded-[56px] border border-gray-100/80 reveal stagger-item" style="--order: 2">
-          <div class="w-24 h-24 bg-gradient-to-br from-brand-green/20 to-brand-green/5 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-sm">
+        <div class="premium-card relative z-10 bg-white/80 backdrop-blur-sm p-12 rounded-[56px] border border-white shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:-translate-y-4 hover:shadow-[0_30px_60px_rgba(168,198,108,0.15)] transition-all duration-500 reveal stagger-item group" style="--order: 2">
+          <div class="w-24 h-24 bg-gradient-to-br from-gray-50 to-gray-100 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] group-hover:scale-110 group-hover:bg-brand-green group-hover:text-white transition-all duration-500">
             <iconify-icon icon="lucide:refresh-cw"></iconify-icon>
           </div>
-          <h3 class="text-2xl mb-4 text-gray-800">Adaptación</h3>
+          <h3 class="text-2xl mb-4 text-gray-900 font-bold">Adaptación</h3>
           <p class="text-[#555555] font-medium leading-[1.8]">Ajustamos el programa al 100% a tus horarios, preferencias y estilo de vida real.</p>
         </div>
         <!-- Paso 3 -->
-        <div class="premium-card bg-white p-12 rounded-[56px] border border-gray-100/80 reveal stagger-item" style="--order: 3">
-          <div class="w-24 h-24 bg-gradient-to-br from-brand-green/20 to-brand-green/5 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-sm">
+        <div class="premium-card relative z-10 bg-white/80 backdrop-blur-sm p-12 rounded-[56px] border border-white shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:-translate-y-4 hover:shadow-[0_30px_60px_rgba(168,198,108,0.15)] transition-all duration-500 reveal stagger-item group" style="--order: 3">
+          <div class="w-24 h-24 bg-gradient-to-br from-gray-50 to-gray-100 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] group-hover:scale-110 group-hover:bg-brand-green group-hover:text-white transition-all duration-500">
             <iconify-icon icon="lucide:bar-chart-3"></iconify-icon>
           </div>
-          <h3 class="text-2xl mb-4 text-gray-800">Seguimiento</h3>
+          <h3 class="text-2xl mb-4 text-gray-900 font-bold">Seguimiento</h3>
           <p class="text-[#555555] font-medium leading-[1.8]">Realizamos controles detallados para ajustar variables y asegurar tu progresión.</p>
         </div>
         <!-- Paso 4 -->
-        <div class="premium-card bg-white p-12 rounded-[56px] border border-gray-100/80 reveal stagger-item" style="--order: 4">
-          <div class="w-24 h-24 bg-gradient-to-br from-brand-green/20 to-brand-green/5 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-sm">
+        <div class="premium-card relative z-10 bg-white/80 backdrop-blur-sm p-12 rounded-[56px] border border-white shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:-translate-y-4 hover:shadow-[0_30px_60px_rgba(168,198,108,0.15)] transition-all duration-500 reveal stagger-item group" style="--order: 4">
+          <div class="w-24 h-24 bg-gradient-to-br from-gray-50 to-gray-100 text-brand-green rounded-3xl flex items-center justify-center text-5xl mb-8 mx-auto shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] group-hover:scale-110 group-hover:bg-brand-green group-hover:text-white transition-all duration-500">
             <iconify-icon icon="lucide:target"></iconify-icon>
           </div>
-          <h3 class="text-2xl mb-4 text-gray-800">Resultados</h3>
+          <h3 class="text-2xl mb-4 text-gray-900 font-bold">Resultados</h3>
           <p class="text-[#555555] font-medium leading-[1.8]">Planteamos metas medibles y te acompañamos hasta consolidar tu mejor versión.</p>
         </div>
       </div>
@@ -419,10 +424,10 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
         <!-- Plan Integral -->
-        <div class="premium-card bg-brand-cream rounded-[56px] p-12 flex flex-col h-full border border-gray-100 reveal-scale stagger-item" style="--order: 1">
-          <h3 class="text-3xl mb-3 text-gray-900">Plan Integral</h3>
+        <div class="premium-card bg-white rounded-[56px] p-12 flex flex-col h-full border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] transition-all duration-500 reveal-scale stagger-item" style="--order: 1">
+          <h3 class="text-3xl mb-3 text-gray-900 font-bold">Plan Integral</h3>
           <p class="text-[#777] mb-8 text-lg">Comienza tu transformación</p>
-          <div class="text-6xl font-black text-brand-green mb-10 tracking-tight">$3.400 <span class="text-xl text-gray-400 font-medium tracking-normal">/mes</span></div>
+          <div class="text-6xl font-black text-gray-900 mb-10 tracking-tight">$3.400 <span class="text-xl text-gray-400 font-medium tracking-normal">/mes</span></div>
           <ul class="space-y-6 mb-16 flex-grow">
             <li class="flex items-start gap-4">
               <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
@@ -445,32 +450,32 @@
         </div>
 
         <!-- Plan Deportivo -->
-        <div class="premium-card bg-white rounded-[56px] p-12 flex flex-col h-full border-[3px] border-brand-green relative shadow-[0_30px_60px_rgba(168,198,108,0.15)] reveal-scale stagger-item transform md:-translate-y-4" style="--order: 2">
-          <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-green to-[#8eb055] text-white px-10 py-3 rounded-full text-sm font-black tracking-[3px] uppercase shadow-lg">
+        <div class="premium-card bg-gray-900 rounded-[56px] p-12 flex flex-col h-full border border-gray-800 relative shadow-[0_30px_80px_rgba(0,0,0,0.3)] hover:-translate-y-6 transition-all duration-500 reveal-scale stagger-item transform md:-translate-y-4" style="--order: 2">
+          <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-green to-[#8eb055] text-white px-10 py-3 rounded-full text-sm font-black tracking-[3px] uppercase shadow-[0_10px_20px_rgba(168,198,108,0.3)]">
             RECOMENDADO
           </div>
-          <h3 class="text-3xl mb-3 text-gray-900">Plan Deportivo</h3>
-          <p class="text-[#777] mb-8 text-lg">Rendimiento y composición máxima</p>
-          <div class="text-6xl font-black text-brand-green mb-10 tracking-tight">$3.900 <span class="text-xl text-gray-400 font-medium tracking-normal">/mes</span></div>
+          <h3 class="text-3xl mb-3 text-white font-bold">Plan Deportivo</h3>
+          <p class="text-gray-400 mb-8 text-lg">Rendimiento y composición máxima</p>
+          <div class="text-6xl font-black text-brand-green mb-10 tracking-tight">$3.900 <span class="text-xl text-gray-500 font-medium tracking-normal">/mes</span></div>
           <ul class="space-y-6 mb-16 flex-grow">
             <li class="flex items-start gap-4">
               <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
-              <span class="text-lg text-[#555] font-semibold">Estrategia para alto rendimiento</span>
+              <span class="text-lg text-gray-300 font-medium">Estrategia para alto rendimiento</span>
             </li>
             <li class="flex items-start gap-4">
               <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
-              <span class="text-lg text-[#555] font-semibold">Estudio Antropométrico completo</span>
+              <span class="text-lg text-gray-300 font-medium">Estudio Antropométrico completo</span>
             </li>
             <li class="flex items-start gap-4">
               <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
-              <span class="text-lg text-[#555] font-semibold">Protocolo de suplementación</span>
+              <span class="text-lg text-gray-300 font-medium">Protocolo de suplementación</span>
             </li>
             <li class="flex items-start gap-4">
               <iconify-icon icon="lucide:check-circle-2" class="text-brand-green text-3xl mt-1"></iconify-icon>
-              <span class="text-lg text-[#555] font-semibold">Ajustes competitivos cada 15 días</span>
+              <span class="text-lg text-gray-300 font-medium">Ajustes competitivos cada 15 días</span>
             </li>
           </ul>
-          <a href="https://wa.me/59896820222" id="plan-2-wa" class="w-full py-6 text-center bg-brand-orange text-white font-bold text-lg rounded-[24px] transition-all shadow-[0_10px_30px_rgba(232,113,74,0.4)] glow-hover tracking-wide">Seleccionar Plan</a>
+          <a href="https://wa.me/59896820222" id="plan-2-wa" class="w-full py-6 text-center bg-brand-green text-gray-900 font-black text-lg rounded-[24px] transition-all shadow-[0_10px_30px_rgba(168,198,108,0.3)] hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(168,198,108,0.5)] tracking-wide">Seleccionar Plan</a>
         </div>
       </div>
       <p class="mt-24 text-center text-[#999] font-medium uppercase tracking-[2px] text-sm">
@@ -555,20 +560,21 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
 
         <!-- Form Side -->
-        <div class="bg-white p-12 md:p-20 rounded-[56px] shadow-[0_30px_80px_rgba(0,0,0,0.06)] reveal-left">
-          <h2 class="text-4xl md:text-[56px] text-brand-orange mb-6">Iniciá tu Proceso</h2>
-          <p class="text-[#777] text-xl mb-14 italic">Registrá tus datos y coordinaremos tu admisión vía WhatsApp</p>
+        <div class="bg-white p-12 md:p-20 rounded-[56px] border border-gray-100 shadow-[0_40px_100px_rgba(0,0,0,0.08)] reveal-left relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-brand-green/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3"></div>
+          <h2 class="text-4xl md:text-[56px] text-gray-900 font-bold mb-6 relative z-10">Iniciá tu Proceso</h2>
+          <p class="text-[#777] text-xl mb-14 italic relative z-10">Registrá tus datos y coordinaremos tu admisión vía WhatsApp</p>
 
-          <form id="contact-form" class="space-y-10" onsubmit="enviarWhatsApp(event)">
-            <div class="space-y-4">
-              <label for="form-nombre" class="text-xs font-black text-[#999] uppercase tracking-[3px]">Identidad</label>
-              <input type="text" id="form-nombre" required class="w-full px-8 py-6 bg-brand-cream/50 border-2 border-transparent rounded-[32px] focus:bg-white focus:border-brand-green/30 focus:ring-4 focus:ring-brand-green/10 focus:outline-none text-xl transition-all" placeholder="Ej: Juan Pérez">
+          <form id="contact-form" class="space-y-8 relative z-10" onsubmit="enviarWhatsApp(event)">
+            <div class="space-y-3">
+              <label for="form-nombre" class="text-xs font-black text-[#999] uppercase tracking-[3px] ml-4">Identidad</label>
+              <input type="text" id="form-nombre" required class="w-full px-8 py-6 bg-gray-50 border border-gray-200 rounded-[32px] focus:bg-white focus:border-brand-green focus:ring-4 focus:ring-brand-green/10 focus:outline-none text-lg transition-all shadow-sm" placeholder="Ej: Juan Pérez">
             </div>
-            <div class="space-y-4">
-              <label for="form-motivo" class="text-xs font-black text-[#999] uppercase tracking-[3px]">Motivo de consulta</label>
-              <textarea id="form-motivo" rows="4" required class="w-full px-8 py-6 bg-brand-cream/50 border-2 border-transparent rounded-[32px] focus:bg-white focus:border-brand-green/30 focus:ring-4 focus:ring-brand-green/10 focus:outline-none text-xl transition-all resize-none" placeholder="Detalla tus objetivos principales..."></textarea>
+            <div class="space-y-3">
+              <label for="form-motivo" class="text-xs font-black text-[#999] uppercase tracking-[3px] ml-4">Motivo de consulta</label>
+              <textarea id="form-motivo" rows="4" required class="w-full px-8 py-6 bg-gray-50 border border-gray-200 rounded-[32px] focus:bg-white focus:border-brand-green focus:ring-4 focus:ring-brand-green/10 focus:outline-none text-lg transition-all resize-none shadow-sm" placeholder="Detalla tus objetivos principales..."></textarea>
             </div>
-            <button type="submit" class="w-full py-7 bg-brand-orange text-white font-bold text-xl rounded-[32px] hover:scale-[1.02] transition-all shadow-[0_15px_40px_rgba(232,113,74,0.3)] glow-hover active:scale-95 tracking-wide mt-4">Contactar por WhatsApp</button>
+            <button type="submit" class="w-full py-6 mt-6 bg-brand-orange text-white font-bold text-xl rounded-[32px] hover:bg-[#d9653c] hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 shadow-[0_15px_30px_rgba(232,113,74,0.3)] hover:shadow-[0_20px_40px_rgba(232,113,74,0.4)] active:scale-95 tracking-wide">Contactar por WhatsApp</button>
           </form>
 
           <div class="mt-16 flex items-center justify-center gap-6 text-[#999]">
