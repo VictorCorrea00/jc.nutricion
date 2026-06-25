@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JC Nutrición | Lic. Jamil Cesin - Nutrición Deportiva y Estética</title>
   <meta name="description" content="Asesoramiento nutricional personalizado en Montevideo. Nutrición deportiva y estética sin dietas restrictivas.">
+  <meta property="og:title" content="JC Nutrición | Lic. Jamil Cesin">
+  <meta property="og:description" content="Nutrición deportiva y estética sin dietas restrictivas en Montevideo.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jcnutricion.com/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=85&w=1200&auto=format&fit=crop">
+  <link rel="canonical" href="https://jcnutricion.com/">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -159,11 +165,112 @@
       }
       #mobile-nav {
         clip-path: circle(0% at 100% 0%);
-        transition: clip-path 0.5s ease-in-out;
+        transition: clip-path 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
       }
       #mobile-nav.open {
         clip-path: circle(150% at 100% 0%);
+        opacity: 1;
+        pointer-events: auto;
       }
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-wa {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 35px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      z-index: 100;
+      transition: all 0.3s ease;
+      animation: pulse-wa 2s infinite;
+    }
+    .floating-wa:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+      animation: none;
+    }
+    @keyframes pulse-wa {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* Scroll to Top Button */
+    .scroll-top {
+      position: fixed;
+      bottom: 100px;
+      right: 35px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--brand-black);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      transform: translateY(20px);
+    }
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .scroll-top:hover {
+      background-color: var(--brand-orange);
+      transform: translateY(-5px);
+    }
+
+    /* Active Nav Link */
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: var(--brand-orange);
+    }
+
+    /* Slider Dots */
+    .slider-dots {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .dot.active {
+      background-color: var(--brand-green);
+      transform: scale(1.2);
+      border-color: rgba(255,255,255,0.8);
+    }
+    .dot:hover {
+      background-color: rgba(255, 255, 255, 0.8);
     }
   </style>
 </head>
@@ -226,7 +333,10 @@
       </div>
     </div>
 
-    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 max-w-[1440px] mx-auto">
+    <!-- Slider Dots Container -->
+    <div class="slider-dots" id="slider-dots-container"></div>
+
+    <div id="hero-content" class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 max-w-[1440px] mx-auto will-change-transform">
       <h1 class="text-5xl sm:text-7xl md:text-[88px] text-white mb-8 leading-[1.05] tracking-tight reveal is-visible">
         Estrategia nutricional <br class="hidden md:block"> de <span class="text-brand-green font-extrabold italic">alto rendimiento</span>
       </h1>
@@ -382,7 +492,7 @@
         <!-- Jamil -->
         <div class="bg-white rounded-[56px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-4 transition-all duration-700 reveal stagger-item group" style="--order: 1">
           <div class="aspect-[4/5] bg-gray-100 relative overflow-hidden">
-            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/bd7ae29c-8fb1-4439-8ad8-b7b188e826a7/1782396791530-d51bb66c/ChatGPT_Image_25_jun_2026__11_11_21.png" alt="Lic. Jamil Cesin" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out">
+            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/bd7ae29c-8fb1-4439-8ad8-b7b188e826a7/1782396791530-d51bb66c/ChatGPT_Image_25_jun_2026__11_11_21.png" alt="Lic. Jamil Cesin, Director Científico y Nutricionista" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
           </div>
           <div class="p-12 md:p-16">
@@ -396,7 +506,7 @@
         <!-- Kari -->
         <div class="bg-white rounded-[56px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-4 transition-all duration-700 reveal stagger-item group md:mt-24" style="--order: 2">
           <div class="aspect-[4/5] bg-gray-100 relative overflow-hidden">
-            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/bd7ae29c-8fb1-4439-8ad8-b7b188e826a7/1782396794146-5dc2eaa1/ChatGPT_Image_25_jun_2026__11_09_32.png" alt="Kari" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out">
+            <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/bd7ae29c-8fb1-4439-8ad8-b7b188e826a7/1782396794146-5dc2eaa1/ChatGPT_Image_25_jun_2026__11_09_32.png" alt="Kari, Patient Experience Manager" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
           </div>
           <div class="p-12 md:p-16">
@@ -420,13 +530,13 @@
         <div class="p-16 border-[1.5px] border-brand-cream rounded-[48px] hover:border-brand-green transition-colors reveal-bounce stagger-item hover:shadow-[0_20px_40px_rgba(168,198,108,0.1)]" style="--order: 1">
           <iconify-icon icon="lucide:users-2" class="text-brand-orange text-6xl mb-8 transition-transform hover:scale-110 duration-300"></iconify-icon>
           <h4 class="text-2xl text-brand-green mb-4">EQUIPO KORU</h4>
-          <p class="text-5xl font-black text-brand-orange mb-6 tracking-tighter">15% OFF</p>
+          <p class="text-5xl font-black text-brand-orange mb-6 tracking-tighter"><span class="counter-up" data-target="15">0</span>% OFF</p>
           <p class="text-[#777] text-lg font-medium">Bonificación en planes para atletas del equipo Koru</p>
         </div>
         <div class="p-16 border-[1.5px] border-brand-cream rounded-[48px] hover:border-brand-green transition-colors reveal-bounce stagger-item hover:shadow-[0_20px_40px_rgba(168,198,108,0.1)]" style="--order: 2">
           <iconify-icon icon="lucide:cookie" class="text-brand-orange text-6xl mb-8 transition-transform hover:scale-110 duration-300"></iconify-icon>
           <h4 class="text-2xl text-brand-green mb-4">AVENTRI</h4>
-          <p class="text-5xl font-black text-brand-orange mb-6 tracking-tighter">10% OFF</p>
+          <p class="text-5xl font-black text-brand-orange mb-6 tracking-tighter"><span class="counter-up" data-target="10">0</span>% OFF</p>
           <p class="text-[#777] text-lg font-medium">En todas tus adquisiciones presenciales en consultorio</p>
         </div>
         <div class="p-16 border-[1.5px] border-brand-cream rounded-[48px] hover:border-brand-green transition-colors reveal-bounce stagger-item hover:shadow-[0_20px_40px_rgba(168,198,108,0.1)]" style="--order: 3">
@@ -449,14 +559,14 @@
           <h2 class="text-4xl md:text-[56px] text-brand-orange mb-6">Iniciá tu Proceso</h2>
           <p class="text-[#777] text-xl mb-14 italic">Registrá tus datos y coordinaremos tu admisión vía WhatsApp</p>
 
-          <form class="space-y-10">
+          <form id="contact-form" class="space-y-10" onsubmit="enviarWhatsApp(event)">
             <div class="space-y-4">
-              <label class="text-xs font-black text-[#999] uppercase tracking-[3px]">Identidad</label>
-              <input type="text" class="w-full px-8 py-6 bg-brand-cream/50 border-2 border-transparent rounded-[32px] focus:bg-white focus:border-brand-green/30 focus:ring-4 focus:ring-brand-green/10 focus:outline-none text-xl transition-all" placeholder="Ej: Juan Pérez">
+              <label for="form-nombre" class="text-xs font-black text-[#999] uppercase tracking-[3px]">Identidad</label>
+              <input type="text" id="form-nombre" required class="w-full px-8 py-6 bg-brand-cream/50 border-2 border-transparent rounded-[32px] focus:bg-white focus:border-brand-green/30 focus:ring-4 focus:ring-brand-green/10 focus:outline-none text-xl transition-all" placeholder="Ej: Juan Pérez">
             </div>
             <div class="space-y-4">
-              <label class="text-xs font-black text-[#999] uppercase tracking-[3px]">Motivo de consulta</label>
-              <textarea rows="4" class="w-full px-8 py-6 bg-brand-cream/50 border-2 border-transparent rounded-[32px] focus:bg-white focus:border-brand-green/30 focus:ring-4 focus:ring-brand-green/10 focus:outline-none text-xl transition-all resize-none" placeholder="Detalla tus objetivos principales..."></textarea>
+              <label for="form-motivo" class="text-xs font-black text-[#999] uppercase tracking-[3px]">Motivo de consulta</label>
+              <textarea id="form-motivo" rows="4" required class="w-full px-8 py-6 bg-brand-cream/50 border-2 border-transparent rounded-[32px] focus:bg-white focus:border-brand-green/30 focus:ring-4 focus:ring-brand-green/10 focus:outline-none text-xl transition-all resize-none" placeholder="Detalla tus objetivos principales..."></textarea>
             </div>
             <button type="submit" class="w-full py-7 bg-brand-orange text-white font-bold text-xl rounded-[32px] hover:scale-[1.02] transition-all shadow-[0_15px_40px_rgba(232,113,74,0.3)] glow-hover active:scale-95 tracking-wide mt-4">Contactar por WhatsApp</button>
           </form>
@@ -497,7 +607,7 @@
                 <div class="pt-2">
                   <p class="font-black text-[#999] text-xs uppercase tracking-[3px] mb-2">Divulgación & Ciencia</p>
                   <p class="text-2xl font-bold text-gray-900 mb-2">@nutricionista.jamilcesin</p>
-                  <a href="#" class="text-brand-green font-bold text-lg hover:text-brand-orange transition-colors nav-link inline-block">Unirse a la comunidad</a>
+                  <a href="https://www.instagram.com/nutricionista.jamilcesin/" target="_blank" rel="noopener noreferrer" class="text-brand-green font-bold text-lg hover:text-brand-orange transition-colors nav-link inline-block">Unirse a la comunidad</a>
                 </div>
               </div>
             </div>
@@ -532,8 +642,8 @@
             Asesoramiento nutricional premium en Montevideo. Diseñamos estrategias científicas para atletas y personas decididas a transformar su composición corporal de manera definitiva.
           </p>
           <div class="flex gap-6 mt-12">
-            <a href="#" id="footer-ig" class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-2xl hover:bg-brand-orange hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(232,113,74,0.3)] transition-all duration-300"><iconify-icon icon="lucide:instagram"></iconify-icon></a>
-            <a href="#" id="footer-fb" class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-2xl hover:bg-brand-orange hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(232,113,74,0.3)] transition-all duration-300"><iconify-icon icon="lucide:facebook"></iconify-icon></a>
+            <a href="https://www.instagram.com/nutricionista.jamilcesin/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" id="footer-ig" class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-2xl hover:bg-brand-orange hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(232,113,74,0.3)] transition-all duration-300"><iconify-icon icon="lucide:instagram"></iconify-icon></a>
+            <a href="https://www.facebook.com/nutricionista.jamilcesin/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" id="footer-fb" class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-2xl hover:bg-brand-orange hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(232,113,74,0.3)] transition-all duration-300"><iconify-icon icon="lucide:facebook"></iconify-icon></a>
           </div>
         </div>
 
@@ -559,11 +669,20 @@
       </div>
 
       <div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-500 font-medium uppercase tracking-[2px]">
-        <p>© 2025 JC NUTRICIÓN — LIC. JAMIL CESIN. RESERVADOS TODOS LOS DERECHOS.</p>
+        <p>© <span id="current-year">2026</span> JC NUTRICIÓN — LIC. JAMIL CESIN. RESERVADOS TODOS LOS DERECHOS.</p>
         <p>DESARROLLO DE ALTO NIVEL PARA TU MARCA</p>
       </div>
     </div>
   </footer>
+
+  <!-- Floating Elements -->
+  <a href="https://wa.me/59896820222" target="_blank" rel="noopener noreferrer" class="floating-wa" aria-label="Contactar por WhatsApp">
+    <iconify-icon icon="logos:whatsapp-icon" style="color: white;"></iconify-icon>
+  </a>
+  
+  <button id="scroll-to-top" class="scroll-top" aria-label="Volver arriba">
+    <iconify-icon icon="lucide:chevron-up"></iconify-icon>
+  </button>
 
   <script>
     // Navigation Scroll Effect
@@ -615,6 +734,51 @@
     };
     preloadImages(imageUrls);
 
+    // Formulario a WhatsApp
+    function enviarWhatsApp(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('form-nombre').value;
+      const motivo = document.getElementById('form-motivo').value;
+      
+      const mensaje = `Hola Jamil, mi nombre es ${nombre}. Te contacto por el siguiente motivo: ${motivo}`;
+      const url = `https://wa.me/59896820222?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    }
+
+    // Dynamic Copyright Year
+    const currentYearEl = document.getElementById('current-year');
+    if(currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+
+    // Slider Logic & Dots
+    const dotsContainer = document.getElementById('slider-dots-container');
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if(index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+    const dots = document.querySelectorAll('.dot');
+
+    function updateDots() {
+      dots.forEach((dot, index) => {
+        if(index === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = index;
+      requestAnimationFrame(() => {
+        slides[currentSlide].classList.add('active');
+      });
+      updateDots();
+    }
+
     function nextSlide() {
       slides[currentSlide].classList.remove('active');
       currentSlide = (currentSlide + 1) % slides.length;
@@ -622,9 +786,20 @@
       requestAnimationFrame(() => {
         slides[currentSlide].classList.add('active');
       });
+      updateDots();
     }
 
-    setInterval(nextSlide, 6000);
+    let slideInterval = setInterval(nextSlide, 6000);
+
+    // Hero Parallax Effect
+    const heroContent = document.getElementById('hero-content');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < window.innerHeight) {
+        const yPos = window.scrollY * 0.4;
+        heroContent.style.transform = `translateY(${yPos}px)`;
+        heroContent.style.opacity = 1 - (window.scrollY / window.innerHeight) * 1.5;
+      }
+    });
 
     // Advanced Intersection Observer for Premium Reveals
     const observerOptions = {
@@ -641,6 +816,66 @@
     }, observerOptions);
 
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-bounce').forEach(el => observer.observe(el));
+
+    // Counter Up Animation Observer
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+          const target = +entry.target.getAttribute('data-target');
+          const duration = 2000;
+          const step = target / (duration / 16);
+          let current = 0;
+          
+          const updateCounter = () => {
+            current += step;
+            if (current < target) {
+              entry.target.innerText = Math.ceil(current);
+              requestAnimationFrame(updateCounter);
+            } else {
+              entry.target.innerText = target;
+              entry.target.classList.add('counted');
+            }
+          };
+          updateCounter();
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter-up').forEach(el => counterObserver.observe(el));
+
+    // Scroll-to-top functionality
+    const scrollTopBtn = document.getElementById('scroll-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Scroll Spy for Nav Links
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(li => {
+        li.classList.remove('active');
+        if (li.getAttribute('href').includes(current)) {
+          li.classList.add('active');
+        }
+      });
+    });
 
     // Smooth scroll offset adjustment for fixed navbar
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
